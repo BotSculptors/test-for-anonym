@@ -56,7 +56,7 @@ export class Posts extends React.Component{
 
                 <PostInfo
                   postText={post.text}
-                  postFoto={post.attachments[0].photo.photo_medium}
+                  postFoto={post.attachments[0].photo.photo_medium === undefined ? post.attachments[0].photo.photo_small : post.attachments[0].photo.photo_medium }
                   />
                 <Social
                   share={post.reposts}
