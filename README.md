@@ -11,11 +11,11 @@ Display of posts
 
 In the package.json file on line 18, change the
 
-Windows users change the script like this:
-'"start": "set PORT=8080  && react-scripts start",'
+Windows users change the script like this:<br/>
+"start": "set PORT=8080  && react-scripts start",
 
-and Linux and Mac users like this:
-'"start": "PORT=8080 react-scripts start",'
+and Linux and Mac users like this: <br/>
+"start": "PORT=8080 react-scripts start",
 
 
 ### Prerequisites
