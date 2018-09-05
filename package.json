@@ -17,3 +17,10 @@
     "eject": "react-scripts eject"
   }
 }
+{
+  "//": "on line 18, change the"
+  "//": "Windows users change the script like this: start : set PORT=5000 && react-scripts start",
+  "//": "Linux and Mac users like this: start: PORT=8080 react-scripts start",
+
+}
+
