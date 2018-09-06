@@ -2,6 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import {PostInfo} from './Post_Components/PostInfo';
 import {Social} from './Post_Components/Social';
+import Spinner from '../static/images/Spinner.svg'
 
 
 export class Posts extends React.Component{
@@ -9,21 +10,55 @@ export class Posts extends React.Component{
     super(props);
     this.state = ({
       Posts: [],
-      Type: 1,
-      Count: 100,
-      Offset: 0
+      Type: 2,
+      Count: 10,
+      Offset: 0,
+      Position: true,
     })
-
+this.componentDidMount = this.componentDidMount.bind(this)
   }
 
-  componentDidMount = () =>{
-
+  componentDidMount = (lazyLoad) =>{
 
     const Data = {
       "type": this.state.Type,
       "count": this.state.Count,
       "offset": this.state.Offset
 }
+
+setInterval(lazyLoad = () => {
+
+
+  if (document.documentElement.scrollTop > document.documentElement.scrollHeight - 1000) {
+
+  const counts = this.state.Count+ 2;
+        axios  ({
+            method: 'post',
+            url: 'http://dev.apianon.ru:3000/posts/get',
+            data: {
+              "type": this.state.Type,
+              "count": counts,
+              "offset": this.state.Offset
+        }
+
+          })
+            .then(res => {
+
+              this.setState({
+                 Posts: res.data.data,
+                 Count: counts,
+               });
+            })
+            .catch(res => {
+                //handle error
+                console.log(res);
+            });
+
+  } else {
+
+  }
+//8400
+}, 1000);
 
     axios  ({
         method: 'post',
@@ -34,6 +69,7 @@ export class Posts extends React.Component{
           console.log(res.data.data);
           this.setState({
              Posts: res.data.data,
+             Position: false,
            });
 
         })
@@ -46,6 +82,7 @@ export class Posts extends React.Component{
   }
   render(){
     return (
+      <div >
       <div className="Posts" >
           {this.state.Posts.map((post, i) =>
 
@@ -67,18 +104,17 @@ export class Posts extends React.Component{
                   />
 
 
-
-
-
-
-
-
-            </div>
+              </div>
 
 
 
           )}
-
+          </div>
+          <img
+            style={{position: this.state.Position ?'absolute':'static'}}
+            className='spinner'
+            src={Spinner}
+            alt="spinner"/>
       </div>
     )
   };

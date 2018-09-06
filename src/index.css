@@ -1,3 +1,7 @@
+.spinner{
+     top: 40%;
+     left: 45%;
+}
 .postInfo span {
   cursor: pointer;
 }
