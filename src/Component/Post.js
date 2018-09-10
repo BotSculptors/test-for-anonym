@@ -34,7 +34,7 @@ setInterval(lazyLoad = () => {
   const counts = this.state.Count+ 2;
         axios  ({
             method: 'post',
-            url: 'https://dev.apianon.ru:3001/v2/messages/test',
+            url: 'https://dev.apianon.ru:3001/posts/get',
             data: {
               "type": this.state.Type,
               "count": counts,
@@ -62,7 +62,7 @@ setInterval(lazyLoad = () => {
 
     axios  ({
         method: 'post',
-        url: 'https://dev.apianon.ru:3001/v2/messages/test',
+        url: 'https://dev.apianon.ru:3001/posts/get',
         data: Data
       })
         .then(res => {
