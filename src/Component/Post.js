@@ -31,7 +31,7 @@ setInterval(lazyLoad = () => {
 
   if (document.documentElement.scrollTop > document.documentElement.scrollHeight - 1000) {
 
-  const counts = this.state.Count+ 2;
+  const counts = this.state.Count+ 3;
         axios  ({
             method: 'post',
             url: 'https://dev.apianon.ru:3001/posts/get',
