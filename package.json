@@ -11,11 +11,9 @@
     "request": "^2.88.0"
   },
   "scripts": {
-      "start": "set PORT=8080 && react-scripts start",
+    "start": "set PORT=8080 && react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   }
 }
-
-
