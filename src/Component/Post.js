@@ -27,28 +27,35 @@ this.componentDidMount = this.componentDidMount.bind(this)
 }
 
 setInterval(lazyLoad = () => {
-console.log(window.pageYOffset + " а также "+document.documentElement.scrollHeight);
+
 
   if (window.pageYOffset > document.documentElement.scrollHeight - 1750) {
 
-  const offset = this.state.Offset + 5;
+  const offset = this.state.Offset + 10;
         axios  ({
             method: 'post',
-            url: 'https://dev.apianon.ru:3001/posts/get',
+            url: 'http://dev.apianon.ru:3000/posts/get',
             data: {
               "type": this.state.Type,
-              "count": this.type.Count,
+              "count": this.state.Count,
               "offset": offset
         }
 
           })
             .then(res => {
 
+console.log(res.data.data);
+Array.prototype.push.apply(this.state.Posts,res.data.data);
+
+
+
               this.setState({
-                 Posts: res.data.data,
-                 Count: counts,
+                 Posts:  this.state.Posts,
+                Offset: offset,
                });
+
             })
+
             .catch(res => {
                 //handle error
                 console.log(res);
@@ -62,7 +69,7 @@ console.log(window.pageYOffset + " а также "+document.documentElement.scro
 
     axios  ({
         method: 'post',
-        url: 'https://dev.apianon.ru:3001/posts/get',
+        url: 'http://dev.apianon.ru:3000/posts/get',
         data: Data
       })
         .then(res => {
