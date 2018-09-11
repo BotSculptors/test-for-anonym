@@ -31,14 +31,14 @@ console.log(window.pageYOffset + " а также "+document.documentElement.scro
 
   if (window.pageYOffset > document.documentElement.scrollHeight - 1750) {
 
-  const counts = this.state.Count+ 3;
+  const offset = this.state.Offset + 5;
         axios  ({
             method: 'post',
             url: 'https://dev.apianon.ru:3001/posts/get',
             data: {
               "type": this.state.Type,
-              "count": counts,
-              "offset": this.state.Offset
+              "count": this.type.Count,
+              "offset": offset
         }
 
           })
