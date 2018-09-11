@@ -27,9 +27,9 @@ this.componentDidMount = this.componentDidMount.bind(this)
 }
 
 setInterval(lazyLoad = () => {
+console.log(123);
 
-
-  if (document.documentElement.scrollTop > document.documentElement.scrollHeight - 1250) {
+  if (document.body.scrollTop || document.documentElement.scrollTop > document.documentElement.scrollHeight - 1250) {
 
   const counts = this.state.Count+ 3;
         axios  ({
