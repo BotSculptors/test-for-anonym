@@ -45,6 +45,9 @@ setInterval(lazyLoad = () => {
             .then(res => {
 
 
+Array.prototype.push.apply(this.state.Posts,res.data.data);
+
+
               this.setState({
                  Posts:  this.state.Posts,
                 Offset: offset,
