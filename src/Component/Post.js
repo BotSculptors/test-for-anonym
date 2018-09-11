@@ -27,7 +27,7 @@ this.componentDidMount = this.componentDidMount.bind(this)
 }
 
 setInterval(lazyLoad = () => {
-console.log(document.documentElement.scrollTop + " а также "+document.documentElement.scrollHeight);
+console.log(window.pageYOffset + " а также "+document.documentElement.scrollHeight);
 
   if (document.documentElement.scrollTop > document.documentElement.scrollHeight - 1250) {
 
